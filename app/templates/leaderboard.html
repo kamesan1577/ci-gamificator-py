@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Leaderboard</title>
+  </head>
+  <body>
+    <h1>Leaderboard</h1>
+    <table>
+      <tr>
+        <th>Rank</th>
+        <th>Developer Name</th>
+        <th>Total Points</th>
+      </tr>
+      {% for developer in developers %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ developer.name }}</td>
+        <td>{{ developer.total_points }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
