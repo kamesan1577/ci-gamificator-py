@@ -33,7 +33,8 @@ class DeveloperCreate(DeveloperBase):
 class Developer(DeveloperBase):
     id: int
     total_points: int
-    test_results: List[TestResult] = []
+    test_results: List["TestResult"] = []
+    repositories: List["Repository"] = []
 
     model_config = ConfigDict(from_attributes=True)
 
@@ -55,7 +56,9 @@ class RepositoryCreate(RepositoryBase):
 
 class Repository(RepositoryBase):
     id: int
+    owner_id: int
     test_results: List[TestResult] = []
+    owner: Developer
 
     model_config = ConfigDict(from_attributes=True)
 

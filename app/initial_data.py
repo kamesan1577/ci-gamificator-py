@@ -1,6 +1,11 @@
 from sqlalchemy.orm import Session
-from .database import SessionLocal, engine
+from database import SessionLocal, engine
 from . import models
+
+
+def reset_db():
+    models.Base.metadata.drop_all(bind=engine)
+    models.Base.metadata.create_all(bind=engine)
 
 
 def init_db(db: Session):
@@ -13,8 +18,8 @@ def init_db(db: Session):
 
     # 仮のリポジトリデータ
     repositories = [
-        models.Repository(name="Repo1", url="https://github.com/user/repo1"),
-        models.Repository(name="Repo2", url="https://github.com/user/repo2"),
+        models.Repository(name="repo1", url="https://github.com/user/repo1"),
+        models.Repository(name="repo2", url="https://github.com/user/repo2"),
     ]
 
     # 仮のテスト結果データ
@@ -49,6 +54,7 @@ def init_db(db: Session):
 
 
 if __name__ == "__main__":
+    reset_db()
     db = SessionLocal()
     init_db(db)
     db.close()

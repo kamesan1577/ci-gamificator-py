@@ -69,3 +69,11 @@ def get_repository(db: Session, repository_id: int):
         .filter(models.Repository.id == repository_id)
         .first()
     )
+
+
+def get_repository_by_name(db: Session, repository_name: str):
+    return (
+        db.query(models.Repository)
+        .filter(models.Repository.name == repository_name)
+        .first()
+    )
