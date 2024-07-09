@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from database import SessionLocal, engine
-from . import models
+from app.db import models
 
 
 def reset_db():
@@ -11,35 +11,35 @@ def reset_db():
 def init_db(db: Session):
     # 仮の開発者データ
     developers = [
-        models.Developer(name="Alice", total_points=100),
-        models.Developer(name="Bob", total_points=150),
-        models.Developer(name="Charlie", total_points=200),
+        models.Developer(name="alice", total_points=100),
+        models.Developer(name="bob", total_points=150),
+        models.Developer(name="charlie", total_points=200),
     ]
 
     # 仮のリポジトリデータ
     repositories = [
-        models.Repository(name="repo1", url="https://github.com/user/repo1"),
-        models.Repository(name="repo2", url="https://github.com/user/repo2"),
+        models.Repository(name="alice/repo1", url="https://github.com/alice/repo1"),
+        models.Repository(name="bob/repo2", url="https://github.com/bob/repo2"),
     ]
 
     # 仮のテスト結果データ
     test_results = [
         models.TestResult(
-            developer_name="Alice",
+            developer_name="alice",
             code_diff="diff1",
             coverage=85.0,
             coverage_change=5.0,
             repository_id=1,
         ),
         models.TestResult(
-            developer_name="Bob",
+            developer_name="bob",
             code_diff="diff2",
             coverage=90.0,
             coverage_change=10.0,
             repository_id=2,
         ),
         models.TestResult(
-            developer_name="Charlie",
+            developer_name="charlie",
             code_diff="diff3",
             coverage=95.0,
             coverage_change=15.0,

@@ -6,8 +6,8 @@ from fastapi.responses import HTMLResponse, StreamingResponse, Response
 
 import os
 
-from . import crud, models, schemas
-from .database import SessionLocal, engine
+from app.db import crud, models, schemas
+from app.db.database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -107,7 +107,7 @@ async def leaderboard(request: Request, db: Session = Depends(get_db)):
     )
 
 
-@app.get("/api/images/cards/{user_name}/{repo_name}", response_class=Response)
+@app.get("/api/cards/{user_name}/{repo_name}", response_class=Response)
 async def card(
     request: Request, user_name: str, repo_name: str, db: Session = Depends(get_db)
 ):

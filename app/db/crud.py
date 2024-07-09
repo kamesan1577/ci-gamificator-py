@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from . import models, schemas
+from app.db import models, schemas
 
 
 def create_test_result(db: Session, test_result: schemas.TestResultCreate):
